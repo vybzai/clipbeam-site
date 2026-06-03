@@ -1,0 +1,44 @@
+# clipbeam
+
+> A single static Go binary that beams a file, screenshot, or clipboard from your laptop onto a remote box's disk — over your existing SSH or Tailscale — and prints the absolute path, so a coding agent on that box can read it. It also exposes a private agent-to-agent channel (an inbox drained by `clipbeam recv`). Built for agents: every verb is `--json`-able, has a deterministic exit-code table, and is self-describing via `clipbeam schema`.
+
+## Repo
+- [clipbeam-cli on GitHub](https://github.com/vybzai/clipbeam-cli): public source for the Go CLI (MIT, single static binary, no runtime deps).
+
+## Install
+- One-line installer (OS/arch detect, checksum-verified): `curl -fsSL https://raw.githubusercontent.com/vybzai/clipbeam-cli/main/install.sh | sh`
+- Go toolchain: `go install github.com/vybzai/clipbeam-cli/cmd/clipbeam@latest`
+- Homebrew: coming soon.
+
+## Core flow
+- `clipbeam setup user@box` — bootstrap a box once over SSH (streams the binary, verifies the host key, pairs).
+- `clipbeam send screenshot.png box` — beam a file; prints the REMOTE absolute path.
+- On the box: `claude "describe the image at $(clipbeam last)"` — the agent reads the file by path.
+
+## Commands
+- `setup <user@host>` — bootstrap + pair a remote box over SSH.
+- `send <file> [target] [--agent]` — beam a file; print the remote path.
+- `shot [target] [--agent]` — screenshot -> beam the PNG; print the path.
+- `msg <text> [--reply-to <uuid>]` — text on the private agent channel.
+- `push [target]` — beam the local clipboard.
+- `last` / `wait` — print the last received path / block for the next one.
+- `recv [--timeout N]` — dequeue one agent-inbox item (FIFO long-poll).
+- `watch [--channel agent|clipboard|both]` — stream incoming items as NDJSON.
+- `health` / `version` / `schema` — liveness / version / full self-description.
+- `install-skill` / `serve` / `ingest` / `doctor` / `service` — agent skill / receiver daemon / stdin frame ingest / diagnostics / optional service unit.
+
+## Built for agents
+- Every command emits a stable, versioned JSON object with `--json` (or set `CLIPBEAM_JSON`).
+- Deterministic exit codes (0 success, 2 usage, 4 unauthorized, 5 forbidden, 6 peer offline / host-key changed, 7 payload too large, 8 config/identity, 9 remote I/O).
+- `clipbeam schema` prints the authoritative machine-readable surface: every verb, flag, JSON shape, and exit code.
+
+## Security
+- Push-only; nothing leaves a machine unless you act.
+- SSH default transport (rides your existing tunnel, host keys verified against known_hosts, no new account); Tailscale optional.
+- Secrets in the macOS Keychain or a 0600 token file; logs redact the token. 50 MB payload cap.
+
+## Protocol
+- Speaks ClipBeam's frozen Envelope v1 wire protocol, so the macOS ClipBeam.app and the `clipbeam` CLI interoperate over Tailscale. See PROTOCOL.md in the repo.
+
+## License
+- MIT © Sani / VYBZ.

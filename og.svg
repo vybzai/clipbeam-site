@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="clipbeam: beam a file to your remote agent, get back a path.">
+  <defs>
+    <linearGradient id="beam" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7af7c0" stop-opacity="0"/>
+      <stop offset="38%" stop-color="#7af7c0"/>
+      <stop offset="50%" stop-color="#d8fff0"/>
+      <stop offset="62%" stop-color="#ffb347"/>
+      <stop offset="100%" stop-color="#ffb347" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="head" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7af7c0"/>
+      <stop offset="100%" stop-color="#8ab4ff"/>
+    </linearGradient>
+    <radialGradient id="glowL" cx="12%" cy="6%" r="55%">
+      <stop offset="0%" stop-color="#7af7c0" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#7af7c0" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowR" cx="92%" cy="8%" r="55%">
+      <stop offset="0%" stop-color="#ffb347" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#ffb347" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- canvas -->
+  <rect width="1200" height="630" fill="#07090b"/>
+  <rect width="1200" height="630" fill="url(#glowL)"/>
+  <rect width="1200" height="630" fill="url(#glowR)"/>
+
+  <!-- faint grid texture -->
+  <g stroke="#ffffff" stroke-opacity="0.03" stroke-width="1">
+    <path d="M0 105 H1200 M0 210 H1200 M0 315 H1200 M0 420 H1200 M0 525 H1200"/>
+    <path d="M150 0 V630 M300 0 V630 M450 0 V630 M600 0 V630 M750 0 V630 M900 0 V630 M1050 0 V630"/>
+  </g>
+
+  <!-- frame hairline -->
+  <rect x="0.5" y="0.5" width="1199" height="629" fill="none" stroke="#1f262e"/>
+
+  <!-- brand mark -->
+  <g transform="translate(80,74)">
+    <rect width="56" height="56" rx="14" fill="#11151a" stroke="#1f262e"/>
+    <g transform="translate(8,8) scale(1.25)">
+      <path d="M5 16 L27 6 L20 26 L16 18 Z" fill="#7af7c0"/>
+      <path d="M16 18 L27 6 L20 26 Z" fill="#ffb347"/>
+    </g>
+    <text x="74" y="38" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="30" font-weight="700" fill="#e7eef2">clipbeam</text>
+  </g>
+
+  <!-- eyebrow -->
+  <rect x="80" y="196" width="40" height="3" rx="2" fill="#7af7c0"/>
+  <text x="134" y="202" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="20" letter-spacing="6" fill="#36c896">SINGLE STATIC GO BINARY · MIT</text>
+
+  <!-- headline -->
+  <text x="78" y="290" font-family="-apple-system, 'Segoe UI', Roboto, sans-serif" font-size="72" font-weight="800" letter-spacing="-2" fill="#e7eef2">Beam a file to your</text>
+  <text x="78" y="368" font-family="-apple-system, 'Segoe UI', Roboto, sans-serif" font-size="72" font-weight="800" letter-spacing="-2" fill="url(#head)">remote agent. Get a path.</text>
+
+  <!-- beam underline -->
+  <rect x="80" y="400" width="560" height="3" rx="2" fill="url(#beam)"/>
+
+  <!-- subhead -->
+  <text x="80" y="456" font-family="-apple-system, 'Segoe UI', Roboto, sans-serif" font-size="27" fill="#8a97a3">Pushes a file, screenshot, or clipboard onto a remote box's disk</text>
+  <text x="80" y="492" font-family="-apple-system, 'Segoe UI', Roboto, sans-serif" font-size="27" fill="#8a97a3">over your existing SSH or Tailscale — then prints the absolute path.</text>
+
+  <!-- terminal payoff line -->
+  <g transform="translate(80,536)">
+    <rect width="1040" height="58" rx="12" fill="#070b11" stroke="#1f262e"/>
+    <text x="22" y="37" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="22">
+      <tspan fill="#7af7c0" font-weight="700">$ </tspan><tspan fill="#e7eef2">clipbeam send screenshot.png box  </tspan><tspan fill="#5a6670">→  </tspan><tspan fill="#ffb347">/home/user/.clipbeam/in/screenshot.png</tspan>
+    </text>
+  </g>
+
+  <!-- large plane glyph, top-right, riding a beam -->
+  <g transform="translate(980,96)" opacity="0.95">
+    <rect x="-60" y="40" width="220" height="3" rx="2" fill="url(#beam)"/>
+    <g transform="scale(3.4)">
+      <path d="M5 16 L27 6 L20 26 L16 18 Z" fill="#7af7c0"/>
+      <path d="M16 18 L27 6 L20 26 Z" fill="#ffb347"/>
+    </g>
+  </g>
+</svg>

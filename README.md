@@ -8,11 +8,14 @@ beams a file / screenshot / clipboard from your laptop onto a remote box's disk
 
 - `index.html` — the entire site. One file. Hand-written inline CSS + a tiny
   inline script. **Zero build step, zero runtime deps, no framework, no CDN, no
-  analytics.** The one external request is the Google Fonts stylesheet
-  (Space Grotesk + JetBrains Mono); it is `<link>`-loaded with `preconnect` and
-  `font-display: swap`, and the CSS declares native system stacks as the
-  fallback, so the page renders immediately and never blocks if fonts fail.
-- `vercel.json` — optional static-deploy config.
+  web fonts, no analytics.** Type uses native system stacks only (`ui-sans-serif`
+  / `ui-monospace`), so the page paints instantly with no network request and no
+  FOUT.
+- `llms.txt` — machine-readable summary for LLMs / agents.
+- `favicon.svg` — the paper-plane brand mark (mint body, amber tail-fin).
+- `og.png` — 1200×630 social-share card referenced from `og:image` / `twitter:image`
+  (rendered from `og.svg`, which is kept as the editable source).
+- `vercel.json` — optional static-deploy config (security headers, clean URLs).
 
 ## Run locally
 
@@ -40,24 +43,25 @@ vercel --prod     # production
 
 No framework, no `package.json`, no install step.
 
-## Design — "Transmission"
+## Design — "Signal"
 
-A dark, terminal-grade direction built on one idea: the two endpoints are
-**color-coded**. Cyan-mint (`#2ee6c5`) is the *local* laptop / sender; warm amber
-(`#ffb347`) is the *remote* box / receiver. A beam (with a paper-plane riding it)
-carries the payload left→right, and the printed remote **path** is rendered in the
-remote's amber everywhere it appears — so the eye tracks the transmission from
-laptop to box.
+A dark operator-console aesthetic built on one idea: the two endpoints are
+**color-coded** as a two-temperature system. Mint (`#7af7c0`) is *local* — you,
+your laptop, the primary action. Amber (`#ffb347`) is *remote* — the box, the
+receiver, and the **printed path** wherever it appears. Soft blue (`#8ab4ff`) is
+the **SSH transport** between them. A mint→white→amber "beam" sweeps left→right
+(the file traveling laptop→box), and a two-tone paper-plane glyph (mint body,
+amber tail-fin) recurs at every scale, echoing the macOS app icon.
 
-The hero is a live "transmission" panel: two labelled endpoint cards, an animated
-beam + paper-plane between them, a two-prompt terminal showing the real
-`clipbeam send → /remote/path → agent reads it` flow, and a literal
-**"hand off to your agent"** control that copies `claude "describe … $(clipbeam last)"`.
+The hero's reason to exist is a live terminal showing the real, verified flow:
+`clipbeam setup user@box` → `clipbeam send screenshot.png box` → the remote path
+printed in amber → `claude "describe the image at $(clipbeam last)"`.
 
-Type: **Space Grotesk** (display) + **JetBrains Mono** (code/UI chrome), with
-native system stacks as the fallback. Accessible: semantic HTML, visible focus
-states, alt/aria text on the diagram and terminal, and `prefers-reduced-motion`
-disables the beam animation.
+Type: native system **sans** (marketing voice) + native system **mono** (every
+product moment) — no web fonts. Accessible: semantic HTML, visible focus states,
+alt/aria text on the terminal and every icon, a real `<table>` exit-code surface
+with `<th scope>`, and `prefers-reduced-motion` disables all motion (the beam
+degrades to a static mint→amber bar).
 
 ## License
 

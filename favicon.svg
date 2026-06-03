@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="clipbeam">
+  <rect width="32" height="32" rx="8" fill="#07090b"/>
+  <rect x="0.5" y="0.5" width="31" height="31" rx="7.5" fill="none" stroke="#1f262e"/>
+  <!-- paper-plane: mint body + amber tail-fin (local -> remote) -->
+  <path d="M5 16 L27 6 L20 26 L16 18 Z" fill="#7af7c0"/>
+  <path d="M16 18 L27 6 L20 26 Z" fill="#ffb347"/>
+</svg>
