@@ -996,12 +996,19 @@ footer{
     <div class="sec-head reveal">
       <span class="eyebrow">install</span>
       <h2 id="install-h">One file. No runtime deps.</h2>
-      <p>A single static binary. Pick either path — both work and stay current.</p>
+      <p>A single static binary. Pick any path — all three work and stay current.</p>
     </div>
     <div class="install-grid">
       <div class="codebox reveal">
         <div class="cb-head">
-          <span class="cb-label rec">curl · recommended</span>
+          <span class="cb-label rec">homebrew · recommended</span>
+          <button class="copy" data-copy-target="#i-brew" aria-label="Copy Homebrew install command to clipboard">Copy</button>
+        </div>
+        <div class="code" id="i-brew">brew install vybzai/tap/clipbeam</div>
+      </div>
+      <div class="codebox reveal">
+        <div class="cb-head">
+          <span class="cb-label">curl</span>
           <button class="copy" data-copy-target="#i-curl" aria-label="Copy install command to clipboard">Copy</button>
         </div>
         <div class="code" id="i-curl">curl -fsSL https://raw.githubusercontent.com/vybzai/clipbeam-cli/main/install.sh | sh</div>
@@ -1014,7 +1021,6 @@ footer{
         <div class="code" id="i-go">go install github.com/vybzai/clipbeam-cli/cmd/clipbeam@latest</div>
       </div>
     </div>
-    <p class="install-note">Homebrew tap coming soon.</p>
 
     <!-- COPY-FOR-LLM hero feature -->
     <div class="handoff reveal">
@@ -1185,10 +1191,10 @@ footer{
     <h2 id="final-h">Beam it. Print the path.</h2>
     <div class="codebox">
       <div class="cb-head">
-        <span class="cb-label rec">curl · recommended</span>
-        <button class="copy" data-copy-target="#i-curl-2" aria-label="Copy install command to clipboard">Copy</button>
+        <span class="cb-label rec">homebrew · recommended</span>
+        <button class="copy" data-copy-target="#i-brew-2" aria-label="Copy Homebrew install command to clipboard">Copy</button>
       </div>
-      <div class="code" id="i-curl-2">curl -fsSL https://raw.githubusercontent.com/vybzai/clipbeam-cli/main/install.sh | sh</div>
+      <div class="code" id="i-brew-2">brew install vybzai/tap/clipbeam</div>
     </div>
     <a class="btn btn-primary" href="https://github.com/vybzai/clipbeam-cli" target="_blank" rel="noopener">View on GitHub ↗</a>
   </div>
@@ -1227,6 +1233,8 @@ footer{
 <template id="llm-prompt">You have access to a tool called clipbeam — a single static Go binary that beams a file, screenshot, or clipboard from a paired machine onto THIS box's disk and prints the absolute path, plus a private agent-to-agent inbox. It is built for agents: every verb takes --json, has a deterministic exit-code table, and is self-describing.
 
 Install (pick one):
+  brew install vybzai/tap/clipbeam
+  # or:
   curl -fsSL https://raw.githubusercontent.com/vybzai/clipbeam-cli/main/install.sh | sh
   # or, with a Go toolchain:
   go install github.com/vybzai/clipbeam-cli/cmd/clipbeam@latest
