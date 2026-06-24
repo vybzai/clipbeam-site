@@ -10,6 +10,9 @@
 - Go toolchain: `go install github.com/vybzai/clipbeam-cli/cmd/clipbeam@latest`
 - Homebrew: `brew install vybzai/tap/clipbeam`
 
+## Make your agent skill-aware
+- `clipbeam install-skill` — writes a clipbeam skill into `~/.claude/skills` and `~/.codex/skills` (honors `$CLAUDE_CONFIG_DIR` / `$CODEX_HOME`) so coding agents know the tool in every future session. Idempotent; `--force` to overwrite.
+
 ## Core flow
 - `clipbeam setup user@box` — bootstrap a box once over SSH (streams the binary, verifies the host key, pairs).
 - `clipbeam send screenshot.png box` — beam a file; prints the REMOTE absolute path.

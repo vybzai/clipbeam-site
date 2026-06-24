@@ -1026,7 +1026,7 @@ footer{
     <div class="handoff reveal">
       <div>
         <div class="ht">Hand it to your agent</div>
-        <p>Copy a ready-made onboarding prompt that teaches a coding agent exactly how to use clipbeam — every core verb, the install lines, and the <code>clipbeam schema</code> pointer. Paste it into the agent and it knows the tool.</p>
+        <p>Copy a ready-made onboarding prompt that teaches a coding agent exactly how to use clipbeam — every core verb, the install lines, and the <code>clipbeam schema</code> pointer. Paste it into the agent and it knows the tool. One step in: <code>clipbeam install-skill</code> writes a clipbeam skill into <code>~/.claude/skills</code> and <code>~/.codex/skills</code>, so the agent knows it in every future session too.</p>
       </div>
       <button class="btn btn-primary" id="copy-llm-btn" aria-label="Copy the LLM onboarding prompt to clipboard">⧉ Copy for LLM</button>
     </div>
@@ -1215,7 +1215,7 @@ footer{
       </span>
       <nav class="foot-links" aria-label="Footer">
         <a href="https://github.com/vybzai/clipbeam-cli" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://github.com/vybzai/clipbeam-cli#schema" target="_blank" rel="noopener">schema</a>
+        <a href="https://github.com/vybzai/clipbeam-cli#built-for-agents" target="_blank" rel="noopener">schema</a>
         <a href="/llms.txt">llms.txt</a>
       </nav>
     </div>
@@ -1249,6 +1249,8 @@ Core verbs:
   clipbeam watch                  stream incoming items as NDJSON
 
 Typical use: read whatever was just beamed to you with  cat "$(clipbeam last)"  or pass it to a model, e.g.  claude "describe the image at $(clipbeam last)".
+
+Make yourself skill-aware (recommended): run  clipbeam install-skill  once. It writes a clipbeam skill into ~/.claude/skills and ~/.codex/skills so you (and any future agent session here) know this tool without re-reading this prompt. Idempotent; pass --force to overwrite.
 
 Before scripting against it, run  clipbeam schema  — that is the authoritative surface: it lists every verb, flag, JSON shape, and exit code. Add --json to any command for structured output. Repo: https://github.com/vybzai/clipbeam-cli</template>
 
