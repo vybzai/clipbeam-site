@@ -29,6 +29,7 @@
 - `watch [--channel agent|clipboard|both]` — stream incoming items as NDJSON.
 - `health` / `version` / `schema` — liveness / version / full self-description.
 - `install-skill` / `serve` / `ingest` / `doctor` / `service` — agent skill / receiver daemon / stdin frame ingest / diagnostics / optional service unit.
+- Transport: the send verbs (`send`/`shot`/`msg`/`push`) take `--transport auto|ssh|tailscale`. Default is address-driven (a tailnet name/IP → Tailscale, `user@host` → SSH). `auto` prefers Tailscale when the peer is on the tailnet, a shared token exists, and its `/health` answers — else falls back to daemonless SSH. Client-side selection only; the wire and the mandatory `/clip` token are unchanged.
 
 ## Built for agents
 - Every command emits a stable, versioned JSON object with `--json` (or set `CLIPBEAM_JSON`).

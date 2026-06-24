@@ -1059,7 +1059,7 @@ footer{
       </li>
       <li class="feat reveal">
         <span class="ftitle">ssh · tailscale</span>
-        <p>Rides the SSH tunnel you already have; host keys verified against known_hosts. Tailscale is optional for always-on.</p>
+        <p>Rides the SSH tunnel you already have; host keys verified against known_hosts. Tailscale is optional for always-on. <code>--transport auto</code> prefers Tailscale when the box answers <code>/health</code>, else falls back to SSH — same command.</p>
       </li>
       <li class="feat reveal">
         <span class="ftitle">clipbeam schema</span>
@@ -1247,6 +1247,8 @@ Core verbs:
   clipbeam last                   print the most-recent received path (no newline)
   clipbeam recv                   dequeue one agent-inbox item (FIFO long-poll)
   clipbeam watch                  stream incoming items as NDJSON
+
+Transport is automatic: the send verbs take --transport auto|ssh|tailscale (default: address-driven). --transport auto prefers Tailscale when the box is on your tailnet and answers /health (a shared token must exist), else it falls back to plain SSH — same command, faster path when available.
 
 Typical use: read whatever was just beamed to you with  cat "$(clipbeam last)"  or pass it to a model, e.g.  claude "describe the image at $(clipbeam last)".
 
